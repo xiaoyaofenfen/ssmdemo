@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liangfen.dao.RegisterInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.liangfen.model.RegisterInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" /> 
+    <association property="genderEntity" column="gender_id" select="getGender"/>
+    <association property="educationEntity" column="education_id" select="getEducation"/>
+    <association property="originEntity" column="origin_id" select="getOrigin"/>
+    <association property="userEntity" column="user_id" select="getUser"/>
+  </resultMap>
+  
+  <!-- 公共sql语句 -->
+  
+  <sql id="baseColumn">
+  id, name, gender_id, education_id, origin_id, user_id
+  </sql>
+  
+  <select id="getGender" parameterType="int" resultType="com.liangfen.model.Gender">
+    SELECT id id, type type FROM gender WHERE id=#{id}
+  </select>
+  
+  <select id="getEducation" parameterType="int" resultType="com.liangfen.model.Education">
+    SELECT id id, level level FROM education WHERE id=#{id}
+  </select>
+     
+  <select id="getOrigin" parameterType="int" resultType="com.liangfen.model.Origin">
+    SELECT id id, city city FROM origin WHERE id=#{id}
+  </select>
+  
+  <select id="getUser" parameterType="int" resultType="com.liangfen.model.User">
+    SELECT id id, username userName, password password FROM user WHERE id=#{id}
+  </select>
+         
+  <!-- 查询相关 -->
+       
+  <select id="qeuryAllRegisterInfo" resultMap="BaseResultMap" >
+    SELECT *
+    FROM register_info
+  </select>
+  
+  <select id="queryRegisterInfoById" parameterType="int" resultMap="BaseResultMap" >
+    SELECT *
+    FROM register_info
+    WHERE id = #{id}
+  </select>  
+  
+  <select id="queryRegisterInfoByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  SELECT *
+  FROM register_info
+  WHERE name = #{theName}
+  LIMIT 1
+  </select>
+  
+  <select id="getCountByName" parameterType="java.lang.String" resultType="int">
+  SELECT count(*)
+  FROM register_info
+  WHERE name = #{theName}
+  </select>
+  
+  <!-- 插入相关 -->
+  <select id="getLastInsertId" resultType="int" >
+    SELECT last_insert_id()
+  </select> 
+    
+  <insert id="insertRegisterInfo" parameterType="com.liangfen.model.RegisterInfo">
+    INSERT INTO register_info
+    (
+    name, gender_id, education_id, origin_id, user_id
+    )    
+    VALUES
+    (
+    #{theRegisterInfo.name},
+    #{theRegisterInfo.genderEntity.id},
+    #{theRegisterInfo.educationEntity.id},
+    #{theRegisterInfo.originEntity.id},
+    #{theRegisterInfo.userEntity.id}
+    )    
+  </insert>
+  
+</mapper>

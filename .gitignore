@@ -1,0 +1,8 @@
+.DS_*
+.classpath
+.mymetadata
+.project
+.settings/
+.tern-project/
+.tern*	
+target/
