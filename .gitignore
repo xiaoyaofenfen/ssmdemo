@@ -1,8 +1,4 @@
-.DS_*
-.classpath
-.mymetadata
-.project
+# mac files
+*.DS_Store
 .settings/
-.tern-project/
-.tern*	
 target/
