@@ -25,9 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <h1>user table</h1>   
     <div>
-        <c:forEach var="user" items="${users}" varStatus="status" step="1">
-            <p>id = ${user.id}, name = ${user.userName}, password = ${user.password}</p>
-        </c:forEach>    
+    <a href="/fileDownload">下载模板文件</a>
+    <a href="/fileUpload">上传文件</a>
     </div>
   </body>
 </html>
