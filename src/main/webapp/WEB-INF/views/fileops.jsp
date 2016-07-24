@@ -26,7 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <h1>user table</h1>   
     <div>
     <a href="/fileDownload">下载模板文件</a>
-    <a href="/fileUpload">上传文件</a>
+    <div>
+    <form name="fileUploadForm" action="/fileUpload" enctype="multipart/form-data" method="post">  
+        <div id="browserUploadFile">  
+            <input type="file" name="file">  
+        </div>
+        <input type="submit" value="上传" >  
+    </form>     
+    <p>${statusString}</p>
     </div>
   </body>
 </html>
