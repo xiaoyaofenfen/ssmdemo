@@ -91,6 +91,14 @@
         <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->  
         <url-pattern>/</url-pattern>  
     </servlet-mapping>
+    
+    <!-- 自定义标签配置 -->
+    <jsp-config>  
+       <taglib>  
+           <taglib-uri>SimpleTagDemo</taglib-uri>  
+           <taglib-location>/WEB-INF/tags/SimpleTagDemo.tld</taglib-location>  
+       </taglib>  
+    </jsp-config>  
 
   <welcome-file-list>
     <welcome-file></welcome-file>

@@ -37,6 +37,12 @@ public class UserOperatorController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/simpleTag")
+	public String showSimpleTag(Model model)
+	{
+		return "simpleTag";
+	}
+	
 	@RequestMapping(value="/RegisterInfo")
 	public String reigsterInfoTest(Model model)
 	{
