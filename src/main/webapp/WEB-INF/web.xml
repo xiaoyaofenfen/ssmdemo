@@ -98,6 +98,10 @@
            <taglib-uri>SimpleTagDemo</taglib-uri>  
            <taglib-location>/WEB-INF/tags/SimpleTagDemo.tld</taglib-location>  
        </taglib>  
+       <taglib>  
+       <taglib-uri>HtmlFilter</taglib-uri>  
+           <taglib-location>/WEB-INF/el/HtmlFilter.tld</taglib-location>  
+       </taglib> 
     </jsp-config>  
 
   <welcome-file-list>

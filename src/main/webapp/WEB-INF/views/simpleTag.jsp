@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="SimpleTagDemo" prefix="lf"%>
+<%@taglib uri="HtmlFilter" prefix="el"%>
 
 <%
 String path = request.getContextPath();
@@ -34,5 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             liangfen
         </lf:tagDemo>
     </div>
+    
+    ${el:filter("<a href=''>点点</a>", false)}
   </body>
 </html>
