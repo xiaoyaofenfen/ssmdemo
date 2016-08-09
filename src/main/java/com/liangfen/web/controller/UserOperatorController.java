@@ -2,6 +2,8 @@ package com.liangfen.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,11 @@ public class UserOperatorController {
 		{
 			model.addAttribute("users", list);
 		}
+		
+		String basename = "com.liangfen.resource.Strings";
+		Locale cn = Locale.CHINA;//中文
+		ResourceBundle myResourcesCN = ResourceBundle.getBundle(basename,cn);
+		System.out.println(myResourcesCN.getString("register.username"));
 		
 		return "index";
 	}

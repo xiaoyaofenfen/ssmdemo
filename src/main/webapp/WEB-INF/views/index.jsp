@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%
 String path = request.getContextPath();
@@ -21,13 +22,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
-  
   <body>
    <h1>user table</h1>   
     <div>
         <c:forEach var="user" items="${users}" varStatus="status" step="1">
             <p>id = ${user.id}, name = ${user.userName}, password = ${user.password}</p>
-        </c:forEach>    
+        </c:forEach>
     </div>
+    <fmt:setBundle var="bundle"  basename="com.liangfen.resource.Strings" scope="page"/>
+    <form action="">
+        <fmt:message key="register.username" bundle="${bundle}"/><input type="text" name="username"><br/>
+        <fmt:message key="register.password" bundle="${bundle}"/><input type="password" name="password"><br/>
+    </form>
   </body>
 </html>
