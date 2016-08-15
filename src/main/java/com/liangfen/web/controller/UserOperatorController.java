@@ -44,6 +44,12 @@ public class UserOperatorController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/websocketpage")
+	public String showWebSocket()
+	{
+		return "websocket";
+	}
+	
 	@RequestMapping(value="/simpleTag")
 	public String showSimpleTag(Model model)
 	{
